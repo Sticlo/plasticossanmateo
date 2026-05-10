@@ -1,1 +1,126 @@
-/* You can add global styles to this file, and also import other style files */
+/* ============================================
+   GLOBAL STYLES — Plásticos San Mateo
+   Paleta: Verdes corporativos + Blanco
+   ============================================ */
+
+/* Variables globales */
+:root {
+  --green-900: #0a2e15;
+  --green-800: #0f4226;
+  --green-700: #1a5c38;
+  --green-600: #2a7a4e;
+  --green-500: #3a9d64;
+  --green-400: #5cbf7e;
+  --green-300: #8fd9a7;
+  --green-200: #b8e9c8;
+  --green-100: #d9f4e2;
+  --green-50:  #f0faf3;
+
+  --text-primary:    #0a2e15;
+  --text-secondary:  #4a5d4e;
+  --text-muted:      #7a8a7e;
+  --text-on-green:   #ffffff;
+
+  --bg-white:    #ffffff;
+  --bg-light:    #f7faf8;
+  --bg-gray:     #f2f5f3;
+
+  --shadow-sm:   0 1px 3px rgba(10, 46, 21, 0.06);
+  --shadow-md:   0 4px 16px rgba(10, 46, 21, 0.08);
+  --shadow-lg:   0 8px 32px rgba(10, 46, 21, 0.12);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+          'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --ease: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --header-h:    80px;
+  --header-h-sm: 68px;
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  color: var(--text-primary);
+  background: var(--bg-white);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Utilidades */
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin: 0 0 0.75rem;
+}
+
+.section-subtitle {
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 2rem;
+  max-width: 600px;
+}
+
+.section-padding {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,32 +1,55 @@
-<header class="header" [class.scrolled]="isScrolled">
+<header class="header" [class.scrolled]="isScrolled" [class.menu-open]="menuOpen">
   <div class="header-container">
+
+    <!-- Logo -->
     <div class="logo">
-      <a routerLink="/">
-        <img src="images/logoplasticos.png" alt="Plásticos San Mateo" class="logo-image" />
+      <a routerLink="/" (click)="closeMenu()">
+        <img src="/logoplasticos.png" alt="Plásticos San Mateo" class="logo-image" />
       </a>
     </div>
 
-    <nav class="nav-menu" [class.active]="menuOpen">
+    <!-- Navegación -->
+    <nav class="nav-menu" [class.active]="menuOpen" aria-label="Navegación principal">
       <ul class="nav-list">
-        <li><a routerLink="/" (click)="closeMenu()" [class.active]="isActive('/')">Inicio</a></li>
-        <li><a routerLink="/productos" (click)="closeMenu()" [class.active]="isActive('/productos')">Productos</a></li>
-        <li><a routerLink="/servicios" (click)="closeMenu()" [class.active]="isActive('/servicios')">Servicios</a></li>
-        <li><a routerLink="/nosotros" (click)="closeMenu()" [class.active]="isActive('/nosotros')">Nosotros</a></li>
-        <li><a routerLink="/contacto" (click)="closeMenu()" [class.active]="isActive('/contacto')">Contacto</a></li>
+        <li>
+          <a routerLink="/productos" routerLinkActive="active" (click)="closeMenu()">Agrícola</a>
+        </li>
+        <li>
+          <a routerLink="/servicios" routerLinkActive="active" (click)="closeMenu()">Industrial</a>
+        </li>
+        <li>
+          <a routerLink="/nosotros" routerLinkActive="active" (click)="closeMenu()">Nosotros</a>
+        </li>
+        <li>
+          <a routerLink="/contacto" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
+        </li>
       </ul>
+
+      <!-- CTA dentro del menú móvil -->
+      <div class="nav-cta-mobile">
+        <a routerLink="/contacto" class="btn-cotizar-mobile" (click)="closeMenu()">
+          Cotizar Ahora
+        </a>
+      </div>
     </nav>
 
+    <!-- Acciones desktop -->
     <div class="header-actions">
-      <a routerLink="/contacto" class="btn-cotizar">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2v20M2 12h20"/>
-        </svg>
-        Cotizar
-      </a>
-      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Menú">
-        <span class="hamburger-line" [class.open]="menuOpen"></span>
-        <span class="hamburger-line" [class.open]="menuOpen"></span>
+      <a routerLink="/contacto" class="btn-cotizar" (click)="closeMenu()">Cotizar ahora</a>
+      <button
+        class="menu-toggle"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen"
+        [attr.aria-label]="menuOpen ? 'Cerrar menú' : 'Abrir menú'"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
       </button>
     </div>
+
   </div>
 </header>
+
+<!-- Overlay oscuro para cerrar menú al tocar fuera -->
+<div class="nav-overlay" [class.active]="menuOpen" (click)="closeMenu()" aria-hidden="true"></div>

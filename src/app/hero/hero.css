@@ -1,0 +1,278 @@
+/* ============================================
+   HERO — Plásticos San Mateo
+   Imagen de fondo + texto izquierda + cards
+   ============================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  background-image: url('/heroimage.png');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+
+  padding-top: var(--header-h);
+}
+
+/* Gradiente izquierdo para que el texto se lea bien */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(5, 28, 14, 0.88) 0%,
+    rgba(5, 28, 14, 0.70) 40%,
+    rgba(5, 28, 14, 0.15) 70%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* ===== CONTENIDO (texto izquierda) ===== */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 540px;
+  padding: 3rem 2rem 2rem 3rem;
+  animation: fadeInLeft 0.85s cubic-bezier(0.28, 0.11, 0.32, 1) both;
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.hero-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 0 1.25rem;
+}
+
+.hero-subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(0.875rem, 1.3vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 2rem;
+}
+
+/* ===== BOTONES ===== */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.btn-quote,
+.btn-catalog {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.28s cubic-bezier(0.28, 0.11, 0.32, 1);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-quote {
+  color: #0a3d20;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.22);
+}
+
+.btn-quote:hover {
+  background: rgba(255,255,255,0.93);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+}
+
+.btn-catalog {
+  color: rgba(255,255,255,0.92);
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.45);
+}
+
+.btn-catalog:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.75);
+  transform: translateY(-2px);
+}
+
+.btn-quote:active,
+.btn-catalog:active {
+  transform: scale(0.97);
+}
+
+/* ===== TARJETAS ===== */
+.hero-cards {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.hero-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.6rem 1.75rem;
+  border-right: 1px solid rgba(0,0,0,0.07);
+  transition: background 0.22s ease;
+  cursor: default;
+}
+
+.hero-card:last-child {
+  border-right: none;
+}
+
+.hero-card:hover {
+  background: rgba(26, 92, 56, 0.04);
+}
+
+.card-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  background: rgba(26, 92, 56, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d5530;
+  transition: background 0.22s ease;
+}
+
+.hero-card:hover .card-icon {
+  background: rgba(26, 92, 56, 0.16);
+}
+
+.card-text h3 {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #162e1c;
+  margin: 0 0 0.3rem;
+}
+
+.card-text p {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  color: #6b7a6e;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 900px) {
+  .hero-content {
+    max-width: 480px;
+    padding: 2.5rem 1.5rem 2rem 2rem;
+  }
+
+  .hero-card {
+    padding: 1.4rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .card-text h3 { font-size: 0.68rem; }
+  .card-text p  { font-size: 0.75rem; }
+}
+
+/* ===== MÓVIL ===== */
+@media (max-width: 640px) {
+  .hero {
+    min-height: 100svh;
+    padding-top: var(--header-h);
+    background-position: 60% center;
+    justify-content: flex-end;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(5, 28, 14, 0.40) 0%,
+      rgba(5, 28, 14, 0.70) 35%,
+      rgba(5, 28, 14, 0.88) 65%,
+      rgba(5, 28, 14, 0.95) 100%
+    );
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 2rem 1.25rem 1.5rem;
+    flex: 0 0 auto;
+    min-height: unset;
+    justify-content: flex-end;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.4rem);
+    margin-bottom: 0.875rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-quote,
+  .btn-catalog {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    min-height: 52px;
+    border-radius: 10px;
+  }
+
+  .hero-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    padding: 1rem 1.25rem;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    gap: 0.875rem;
+  }
+
+  .hero-card:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content { animation: none; }
+}
